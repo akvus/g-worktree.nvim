@@ -61,7 +61,7 @@ local git_worktree_list = function(opts)
             local selection = action_state.get_selected_entry(buf)
             if selection ~= nil then
               actions.close(buf)
-              g_worktree.switch_worktree(selection.display)
+              g_worktree.switch_worktree(selection.ordinal)
             end
           end)
           map("i", "<c-d>", remove_worktree)
