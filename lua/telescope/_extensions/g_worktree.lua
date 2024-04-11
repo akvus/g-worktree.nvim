@@ -46,7 +46,7 @@ local git_worktree_list = function(opts)
             if entry.branch == nil then
               display = entry.path
             else
-              display = entry.branch .. " - " .. getLastElem(entry.path)
+              display = entry.branch .. " - " .. getLastElement(entry.path)
             end
             return {
               value = entry.path,
