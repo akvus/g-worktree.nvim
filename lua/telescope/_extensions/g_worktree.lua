@@ -38,10 +38,15 @@ local git_worktree_list = function(opts)
         finder = finders.new_table({
           results = results,
           entry_maker = function(entry)
+            if entry.branch == nil then
+              display = entry.path
+            else
+              display = entry.branch .. " - " .. entry.path
+            end
             return {
               value = entry.path,
               ordinal = entry.branch,
-              display = entry.branch .. " - " .. entry.path,
+              display = display,
             }
           end,
         }),
