@@ -21,6 +21,11 @@ local remove_worktree = function(buf)
   g_worktree.remove_worktree(selected.display)
 end
 
+local function getLastElement(path)
+  local lastElement = path:match(".*[/\\](.*)$")
+  return lastElement
+end
+
 local git_worktree_list = function(opts)
   opts = opts or {}
   local wt_list_output = utils.get_os_command_output({ "git", "worktree", "list" })
@@ -41,7 +46,7 @@ local git_worktree_list = function(opts)
             if entry.branch == nil then
               display = entry.path
             else
-              display = entry.branch .. " - " .. entry.path
+              display = entry.branch .. " - " .. getLastElem(entry.path)
             end
             return {
               value = entry.path,
